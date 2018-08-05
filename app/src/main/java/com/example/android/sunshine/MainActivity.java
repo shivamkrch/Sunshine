@@ -1,5 +1,7 @@
 package com.example.android.sunshine;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -125,6 +127,10 @@ public class MainActivity extends AppCompatActivity implements ForecastAdapter.F
 
     @Override
     public void onClick(String weatherForDay) {
-        Toast.makeText(this, weatherForDay, Toast.LENGTH_SHORT).show();
+        Context context = this;
+        Class destinationClass = DetailActivity.class;
+        Intent startDetailActicity = new Intent(context, destinationClass);
+        startDetailActicity.putExtra(Intent.EXTRA_TEXT, weatherForDay);
+        startActivity(startDetailActicity);
     }
 }
